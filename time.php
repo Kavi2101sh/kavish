@@ -2,9 +2,9 @@
 function getTime($time){
 	$now =strtotime("now");
 	$lastWeek = strtotime($time);
-$difference = abs($now - $lastWeek)/3600;
-$agoTime=getAgoTime($difference/24);
-return $agoTime;
+    $difference = abs($now - $lastWeek)/3600;
+    $agoTime=getAgoTime($difference/24);
+    return $agoTime;
 }
 function getAgoTime($time)
 {
@@ -40,10 +40,7 @@ while ($row = $dataObj->fetch_assoc()) {
     }
 
 ?>
-<html>
-<head>
-	<link rel="stylesheet"  type="text/css" href="connect.css"/>
-	</head>
+<div class="timeline">
 <ul>
 <?php foreach ($data as $key) :?>
 					<li>
@@ -69,4 +66,4 @@ else {
 	</li>
 	<?php endforeach;?>
 </ul>
-</html>
+</div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['mail'])){
-	header("location:newlogin.php");
+	header("location:index.php");
 }
 
 require "connection.php";
@@ -94,7 +94,8 @@ while ($row = $dataObj->fetch_assoc()) {
 				<div class="user-details">
 					<ul>
 						<li> <div class="profile">
-							<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $user['9'] ).' "width="100px" height="100px" alt="profile picture"/>'?></div></li>
+							<?php echo $user[9];	?>
+							<img src="<?= $user[9];?>" width="100px" height="100px" alt="profile picture"/></div></li>
 							<?php 
 								foreach($user as $services){
 									if($user[9]==$services || $user[0]==$services){
@@ -204,7 +205,7 @@ $(document).ready(function(){
 });
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

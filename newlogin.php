@@ -62,7 +62,7 @@ if(isset($_SESSION['mail'])){
                                         </div>
                                     </div>-->
                                 </form>
-                        <form id="SignUp-form" action="signup.php" method="POST" role="form" style="display: none;">
+                        <form id="SignUp-form" action="signup.php" method="POST" role="form" style="display: none;" enctype="multipart/form-data">
                                     <div class="form-group">
             <input type="text" name="name" id="name" class="form-control" placeholder="name" value="">
                                     </div>
@@ -89,7 +89,7 @@ if(isset($_SESSION['mail'])){
             <input type="text" name="gender" id="gender-0" tabindex="1" class="form-control" placeholder="your gender" value="">
                                      </div>
                                     <div class="form-group">
-            <input type="file" name="file_img" id="gender-0" tabindex="1" class="form-control">
+            <input type="file" name="image" id="gender-0" tabindex="1" class="form-control">
                                      </div>
                                     <div class="form-group">
                                         <div class="row">

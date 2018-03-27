@@ -2,7 +2,7 @@
 <input type="file" name="file_img">
 <input type="submit" name="btn_upload" value="upload">
 </form>
-<?php 
+<!--<?php 
 require "connection.php";
 if(isset($_POST['btn_upload']))
 {
@@ -27,5 +27,9 @@ if(isset($_POST['btn_upload']))
 $sql="select * from user where email='kavi2101sh@gmail.com';";
 $dataObj = $conn->query($sql);
 $user = $dataObj->fetch_row();
-?>
-<img src="<?php echo $user['9']?>" width="100px" height="100px" alt="profile picture"/>
+
+echo $user[9];
+?>-->
+<!--<img src="<?php echo $user[9];?>" width="100px" height="100px" alt="profile picture">
+--><img src="photo/card-1.png"><br/>
+<img src="<?php echo $user['picture']; ?>">
