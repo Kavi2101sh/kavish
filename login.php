@@ -11,8 +11,8 @@ if (isset($_POST["loginsubmit"]))
 	if (is_array($result))
 	{
 		session_start();
-		$_SESSION["mail"]=$result[email];
-		$_SESSION["name"]=$result[name];
+		$_SESSION["mail"]=$result['email'];
+		$_SESSION["name"]=$result['name'];
 		if($conn->query($q) === TRUE)
 			header("location:connect.php");
 	}
@@ -22,12 +22,21 @@ if (isset($_POST["loginsubmit"]))
 		$r=$conn->query($q);
 		$s=$r->fetch_assoc();
 		if(is_array($s)){
-			header("location:newlogin.php");
+			$alert= "<script>alert('email valid password incorrect'); 
+			window.location='index.php';</script>";
+			echo $alert;
+			#header("location:index.php");
 		}
 		else
 		{
-			header("location:newlogin.php");
+			$alert= "<script>alert('credentials are invalid'); 
+			window.location='index.php';</script>";
+			#header("location:index.php");
 		}
 	}
+}
+else{
+
+	header("location:index.php");
 }
 ?>

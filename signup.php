@@ -13,7 +13,7 @@ $target_dir = "photo";
 
 if(isset($_FILES['image'])){
       $errors= array();
-     	$file_name = $_FILES['image']['name'];
+     $file_name = $_FILES['image']['name'];
       $file_size = $_FILES['image']['size'];
        $file_tmp = $_FILES['image']['tmp_name'];
        $file_type = $_FILES['image']['type'];
@@ -42,7 +42,7 @@ $sql = "INSERT INTO user (name, email,mobile,password,gender,dob,address,descrip
 		if ($conn->query($sql) === TRUE) 
 		{
     	echo "New record created successfully";
-    	header("location:newlogin.php");
+    	header("location:index.php");
 	} 
 	else
 	 {

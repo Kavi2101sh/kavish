@@ -1,12 +1,13 @@
 <?php
 session_start();
 if(!isset($_SESSION['mail'])){
+	
 	header("location:index.php");
 }
-
+var_dump($_SESSION);
 require "connection.php";
-$ema=$_SESSION['mail'];
-$sql="select * from user where email='$ema'";
+$email=$_SESSION['mail'];
+$sql="select * from user where email='$email'";
 $dataObj = $conn->query($sql);
 $user = $dataObj->fetch_row();
 function getTime($time){
@@ -53,19 +54,16 @@ while ($row = $dataObj->fetch_assoc()) {
 <!DOCTYPE html>
 <html lang="en">
   <head>
+	<title>Hestabit &copy;</title>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="">
-    <meta name="author" content="Team Hestabit">
-    <meta name="description" content="">
-	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <title>Hestabit &copy;</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--CDN FOR Font Awesom-->
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <link rel="stylesheet"  type="text/css" href="connect.css"/>
-	</head>
+    <link rel="stylesheet"  type="text/css" href="css/connect.css"/>
+	
+</head>
 <body>
 
 <div class="header-section">
@@ -94,7 +92,7 @@ while ($row = $dataObj->fetch_assoc()) {
 				<div class="user-details">
 					<ul>
 						<li> <div class="profile">
-							<?php echo $user[9];	?>
+							
 							<img src="<?= $user[9];?>" width="100px" height="100px" alt="profile picture"/></div></li>
 							<?php 
 								foreach($user as $services){
@@ -108,7 +106,7 @@ while ($row = $dataObj->fetch_assoc()) {
 								}
 							?>
     				</ul>		
-  					<button class="btn btn-success" id="opener">Open Edit</button><br>
+  					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open edit</button><br>
  				</div>
  				
 			</div>
@@ -157,31 +155,46 @@ else {
 	</div>
 </div>
 
-<!--edit buuton form!-->
+<!--edit button form!-->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-<div id="dialog" title="Edit Details">
-  	<form  action="update.php" method="POST" role="form">
-			<div class="form-group">
-				<input type="text" name="name" id="name" class="form-control" placeholder="Name" value="<?= $user[1]?>">
-				<input type="submit" name="update_name">
-			</div>
-			<div class="form-group">
-				<input type="password" name="password" id="password" class="form-control" placeholder="passsword" value="<?= $user[7]?>">
-				<input type="submit" name="update_password">
-			</div>
-			<div class="form-group">
-				<input type="text" name="description" id="description" class="form-control" placeholder="Description" value="<?= $user[8]?>">
-				<input type="submit" name="update_desc">
-			</div>									
-			<div class="form-group">
-				<input type="text" name="address" id="address" class="form-control" placeholder="address" value="<?= $user[5]?>">
-				<input type="submit" name="update_addr">
-			</div>
-	</form>
-</div>
-</div>
-</div>
+    
+      <!-- Modal content-->
+      <div id="dialog" title="Edit Details" style="background-color: white">
+     	<form  action="update.php" method="POST" role="form">
+        	<div class="form-group">
+        		<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="<?= $user[1]?>">
+                  </div>
+                <div class="form-group">
+            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" value="<?= $user[7]?>">
+                </div>
+               <div class="form-group">
+            <input type="text" name="description" id="description" tabindex="2" class="form-control" placeholder="Description" value="<?= $user[8]?>">
+               </div>                                  
+              <div class="form-group">
+            <input type="text" name="address" id="address" tabindex="1" class="form-control" placeholder="address" value="<?= $user[5]?>">
+              </div>                      
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+            <input type="submit" name="edit-submit" id="" tabindex="4" class="form-control btn btn-register" value="Edit Now">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+ 
+           </div>
+    </div>
+  </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
 <script type="text/javascript">
 
 $("#picture").change(function() {
@@ -201,11 +214,8 @@ $("#picture").change(function() {
 $(document).ready(function(){
 	setInterval(function(){
 		$('.timeline').load('time.php')
-	}, 3000);
+	}, 30000);
 });
 </script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ if($conn->query($qry)===TRUE)
 {	
 	session_destroy();
 	echo "you are  successfully logout. click here to login again <a href='test.php'>TRY AGAIN</a>";
-	header("location:newlogin.php");
+	header("location:index.php");
 }
 else
 {

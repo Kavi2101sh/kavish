@@ -3,7 +3,6 @@ error_reporting(E_ALL);
 session_start();
 require "connection.php";
 $feed=$_POST["feed"];
-var_dump($feed);
 $imgtest=getimagesize($feed);
 if(is_array($imgtest)){
 $post_type=0;}

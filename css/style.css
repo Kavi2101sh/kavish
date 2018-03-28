@@ -1,6 +1,5 @@
 body {
-    background-image: url("img/background.jpg");
-    padding-top: 90px;
+    margin-top: 90px;
 }
 .panel-login {
     border-color: #ccc;
